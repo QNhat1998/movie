@@ -3,10 +3,18 @@
   "builds": [
     {
       "src": "package.json",
-      "use": "@vercel/node",
+      "use": "@vercel/static-build",
       "config": {
-        "installCommand": "npm install --legacy-peer-deps"
+        "distDir": "build",
+        "buildCommand": "npm run build",
+        "installCommand": "npm install --force"
       }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
     }
   ]
 }
